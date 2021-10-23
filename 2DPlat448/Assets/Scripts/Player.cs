@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
          {
              transform.position = new Vector2(screenHalfWidth, transform.position.y);
          }
+         if (Input.GetAxisRaw("space")&&onGround) // space  can make it jump  
+         {
+         jumpHeight += 0.1f;
+         }
          //jump (this should go in FixedUpdate but its kinda buggy in there for some reason)
          onGround = Physics2D.OverlapCircle(playerBottom.position, checkRadius, ground); //checks if our bottom object is overlapping any ground
          if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer

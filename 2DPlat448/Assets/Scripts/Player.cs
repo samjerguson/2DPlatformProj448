@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
      public LayerMask ground; //mask for ground objects only (things that can be jumped off of)
      float screenHalfWidth; //half the screen width
      public float speed; //speed we move around at
-    public int jumpHeight; //how high we can jump
+     public int jumpHeight; //how high we can jump
+     public float click_time; //time when a key is clicked
 
      // Start is called before the first frame update
      void Start()
@@ -37,13 +38,31 @@ public class Player : MonoBehaviour
          }
          //jump (this should go in FixedUpdate but its kinda buggy in there for some reason)
          onGround = Physics2D.OverlapCircle(playerBottom.position, checkRadius, ground); //checks if our bottom object is overlapping any ground
-         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, add an upward force of our set jumpHeight
+         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
          {
+             click_time = Time.time;
+         }
+         if(Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
+         {
+             get_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
              rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
          }
     }
     void FixedUpdate()
     {
         
+    }
+
+    //Sets jumpHeight depending on how long a key was pressed (value of jumpHeight is limited between 10 to 30)
+    void get_jumpHeight(float time)
+    {
+        jumpHeight = (int) (time * 30f);
+        if (jumpHeight < 10) {
+            jumpHeight = 10;
+        }
+        else if (jumpHeight > 30)
+        {
+            jumpHeight = 30;
+        }
     }
 }

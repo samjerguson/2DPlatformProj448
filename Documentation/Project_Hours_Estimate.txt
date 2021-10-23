@@ -1,3 +1,4 @@
 //Text file to hold estimate of how long each member thinks the project will take
 
 Benjamin Moeller - 40 hours
+Sam Jerguson - 35 hrs

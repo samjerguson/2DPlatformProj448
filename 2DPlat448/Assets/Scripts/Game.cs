@@ -24,7 +24,8 @@ public class Game : MonoBehaviour
 
     void NewRoom()
     {
-        if (player.transform.position.y > cameraHalfHeight * 2 * currRoom + .5) //+.5 because thats half the player height
+        //make sure if camera size is changed, the bottom is still at y = 0, otherwise this breaks
+        if (player.transform.position.y > ((currRoom - 1) * (2 * cameraHalfHeight)) + cameraHalfHeight + .5) //+.5 because thats half the player height
         {
             currRoom++;
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y + 2 * cameraHalfHeight, -10);

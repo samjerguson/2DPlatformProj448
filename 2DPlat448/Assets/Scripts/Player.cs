@@ -13,13 +13,16 @@ public class Player : MonoBehaviour
      public float speed; //speed we move around at
      public int jumpHeight; //how high we can jump
      public float click_time; //time when a key is clicked
+    float screenHeight; //screen height
 
      // Start is called before the first frame update
      void Start()
      {
          rb = GetComponent<Rigidbody2D>(); //sets rb to the Player rigidbody
-         float halfPlayerWidth = transform.localScale.x / 2f; //gets half the player width (so we can offset this amount when going off screen)
+        rb.freezeRotation = true; //stop cube from rotating due to physics
+        float halfPlayerWidth = transform.localScale.x / 2f; //gets half the player width (so we can offset this amount when going off screen)
          screenHalfWidth = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth; //get the screen half width and add the player half size
+        screenHeight = Camera.main.orthographicSize * 2;
      }
 
      // Update is called once per frame

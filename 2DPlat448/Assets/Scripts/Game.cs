@@ -19,11 +19,12 @@ public class Game : MonoBehaviour
     void Update()
     {
         NewRoom(); //camera changes and checkpoint added
+        print(currRoom);
     }
 
     void NewRoom()
     {
-        if (player.transform.position.y > Camera.main.transform.position.y + cameraHalfHeight + .5 && 1 == currRoom) //+.5 because thats half the player height
+        if (player.transform.position.y > cameraHalfHeight * 2 * currRoom + .5) //+.5 because thats half the player height
         {
             currRoom++;
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y + 2 * cameraHalfHeight, -10);

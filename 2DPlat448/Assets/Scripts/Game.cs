@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
     public GameObject player;
     float cameraHalfHeight;
     int currRoom = 1;
-    int roomCheck;
 
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<Player>().GameOver += OnGameOver; //now the GameOver event will call the OnGameOver method in this script, if necessary
         cameraHalfHeight = Camera.main.orthographicSize;
     }
 
@@ -19,7 +20,6 @@ public class Game : MonoBehaviour
     void Update()
     {
         NewRoom(); //camera changes and checkpoint added
-        print(currRoom);
     }
 
     void NewRoom()
@@ -27,13 +27,18 @@ public class Game : MonoBehaviour
         //make sure if camera size is changed, the bottom is still at y = 0, otherwise this breaks
         if (player.transform.position.y > ((currRoom - 1) * (2 * cameraHalfHeight)) + cameraHalfHeight + .5) //+.5 because thats half the player height
         {
-            currRoom++;
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y + 2 * cameraHalfHeight, -10);
+            currRoom++; //we go up a room
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y + 2 * cameraHalfHeight, -10); //moves camera up after we complete the first room
         }
         else if (player.transform.position.y < Camera.main.transform.position.y - cameraHalfHeight - .5 && currRoom > 1)
         {
-            currRoom--;
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 2 * cameraHalfHeight, -10);
+            currRoom--; //we go down a room
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 2 * cameraHalfHeight, -10); //moves camera down if we fall
         }
+    }
+
+    void OnGameOver()
+    {
+        SceneManager.LoadScene(0);
     }
 }

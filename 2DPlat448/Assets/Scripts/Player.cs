@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
+    public event System.Action GameOver;
+    Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
      bool onGround; //used to check whether the player is on the ground or not
      public Transform playerBottom; //passed in a child object on the bottom of the player for checking when the bottom collides
      public float checkRadius; //radius of the playerBottom object
      public LayerMask ground; //mask for ground objects only (things that can be jumped off of)
+    public LayerMask finishLine; //mask for the finish line, which ends the game
      float screenHalfWidth; //half the screen width
      public float speed; //speed we move around at
      public int jumpHeight; //how high we can jump
      public float click_time; //time when a key is clicked
+    bool gameOver = false; //checks if player touched the finish line
     float screenHeight; //screen height
 
      // Start is called before the first frame update
@@ -28,7 +31,8 @@ public class Player : MonoBehaviour
      // Update is called once per frame
      void Update()
      {
-         float input = Input.GetAxisRaw("Horizontal"); //get direction input
+        CheckGameOver(); //checks if the game is over, and if so starts the event
+        float input = Input.GetAxisRaw("Horizontal"); //get direction input
          float velocity = input * speed; //so we know what direction to apply our speed in
          transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
          if (transform.position.x > screenHalfWidth) //if we go beyond the right side of the screen, loop back to the left side
@@ -67,6 +71,14 @@ public class Player : MonoBehaviour
         else if (jumpHeight > 30)
         {
             jumpHeight = 30;
+        }
+    }
+    void CheckGameOver()
+    {
+        gameOver = Physics2D.OverlapCircle(playerBottom.position, checkRadius, finishLine);
+        if (gameOver == true && GameOver != null)
+        {
+            GameOver();
         }
     }
 }

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
      public float click_time; //time when a key is clicked
     bool gameOver = false; //checks if player touched the finish line
     float screenHeight; //screen height
+    bool is_right; //tracks last recorded left or right input
 
      // Start is called before the first frame update
      void Start()
@@ -32,8 +33,13 @@ public class Player : MonoBehaviour
      void Update()
      {
         CheckGameOver(); //checks if the game is over, and if so starts the event
+        CheckLeftRight();
         float input = Input.GetAxisRaw("Horizontal"); //get direction input
-         float velocity = input * speed; //so we know what direction to apply our speed in
+        float velocity = 0;
+         if(onGround)
+         {
+            velocity = input * speed; //so we know what direction to apply our speed in
+         }
          transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
          if (transform.position.x > screenHalfWidth) //if we go beyond the right side of the screen, loop back to the left side
          {
@@ -52,8 +58,14 @@ public class Player : MonoBehaviour
          }
          if(Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
          {
-             get_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
+             set_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
              rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+             if(is_right) {
+                 rb.AddForce((Vector2.right * jumpHeight)/4, ForceMode2D.Impulse);
+             }
+             else {
+                 rb.AddForce((Vector2.left * jumpHeight)/4, ForceMode2D.Impulse);
+             }
          }
     }
     void FixedUpdate()
@@ -62,7 +74,7 @@ public class Player : MonoBehaviour
     }
 
     //Sets jumpHeight depending on how long a key was pressed (value of jumpHeight is limited between 10 to 30)
-    void get_jumpHeight(float time)
+    void set_jumpHeight(float time)
     {
         jumpHeight = (int) (time * 30f);
         if (jumpHeight < 10) {
@@ -79,6 +91,17 @@ public class Player : MonoBehaviour
         if (gameOver == true && GameOver != null)
         {
             GameOver();
+        }
+    }
+    void CheckLeftRight()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            is_right = false;
+        }
+        else if(Input.GetKeyDown(KeyCode.D))
+        {
+            is_right = true;
         }
     }
 }

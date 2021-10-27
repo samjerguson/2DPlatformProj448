@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject player;
     bool canMove = true;
     public event System.Action GameOver;
     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
@@ -107,5 +108,18 @@ public class Player : MonoBehaviour
         {
             is_right = true;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D triggerCollider)
+    {
+        if (triggerCollider.tag == "Enemy")
+        {
+            FindObjectOfType<Game>().coroutineStarter();
+        }
+    }
+
+    public void setMove(bool setCanMove)
+    {
+        canMove = setCanMove;
     }
 }

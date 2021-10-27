@@ -21,10 +21,12 @@ public class Player : MonoBehaviour
      public float click_time; //time when a key is clicked
     bool gameOver = false; //checks if player touched the finish line
     float screenHeight; //screen height
-    bool is_right; //tracks last recorded left or right input
+    bool is_right = false; //tracks last recorded left or right input
+    bool is_left = false; //tracks last recorded left or right input
+    bool is_up = false; //if neither left or right is pressed
 
-     // Start is called before the first frame update
-     void Start()
+    // Start is called before the first frame update
+    void Start()
      {
          rb = GetComponent<Rigidbody2D>(); //sets rb to the Player rigidbody
         rb.freezeRotation = true; //stop cube from rotating due to physics
@@ -69,13 +71,25 @@ public class Player : MonoBehaviour
     }
     void CheckLeftRight()
     {
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            is_right = false;
+            is_left = true;
+            is_up = false;
         }
-        else if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else
+        {
+            is_left = false;
+            is_up = true;
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             is_right = true;
+            is_up = false;
+        }
+        else
+        {
+            is_right = false;
+            is_up = true;
         }
     }
 
@@ -127,9 +141,13 @@ public class Player : MonoBehaviour
             {
                 rb.AddForce((Vector2.right * jumpHeight) / 4, ForceMode2D.Impulse);
             }
-            else
+            else if (is_left)
             {
                 rb.AddForce((Vector2.left * jumpHeight) / 4, ForceMode2D.Impulse);
+            }
+            else if(is_up)
+            {
+                rb.AddForce((Vector2.up * jumpHeight) / 4, ForceMode2D.Impulse);
             }
         }
     }

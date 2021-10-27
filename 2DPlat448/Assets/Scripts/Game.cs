@@ -41,4 +41,20 @@ public class Game : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void coroutineStarter()
+    {
+        StartCoroutine(PlayerDeath());
+    }
+    public IEnumerator PlayerDeath()
+    {
+        bool canMove = false;
+        FindObjectOfType<Player>().setMove(canMove);
+        player.SetActive(false);
+        yield return new WaitForSecondsRealtime(1f);
+        player.SetActive(true);
+        player.transform.position = new Vector3(0, -18.5f, 0);
+        canMove = true;
+        FindObjectOfType<Player>().setMove(canMove);
+    }
 }

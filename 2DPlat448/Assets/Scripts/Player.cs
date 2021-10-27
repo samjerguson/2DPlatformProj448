@@ -9,9 +9,11 @@ public class Player : MonoBehaviour
     public event System.Action GameOver;
     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
      bool onGround; //used to check whether the player is on the ground or not
-     public Transform playerBottom; //passed in a child object on the bottom of the player for checking when the bottom collides
+    bool onCheckpoint; //used to check whether or not the player is on a checkpoint
+    public Transform playerBottom; //passed in a child object on the bottom of the player for checking when the bottom collides
      public float checkRadius; //radius of the playerBottom object
      public LayerMask ground; //mask for ground objects only (things that can be jumped off of)
+    public LayerMask checkpoint; //mask for checkpoint platforms
     public LayerMask finishLine; //mask for the finish line, which ends the game
      float screenHalfWidth; //half the screen width
      public float speed; //speed we move around at
@@ -35,43 +37,10 @@ public class Player : MonoBehaviour
      void Update()
      {
         CheckGameOver(); //checks if the game is over, and if so starts the event
-        CheckLeftRight();
-        float input = Input.GetAxisRaw("Horizontal"); //get direction input
-        float velocity = 0;
-         if(onGround && canMove == true)
-         {
-            velocity = input * speed; //so we know what direction to apply our speed in
-            transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
-        }
-         
-         if (transform.position.x > screenHalfWidth) //if we go beyond the right side of the screen, loop back to the left side
-         {
-             transform.position = new Vector2(-screenHalfWidth, transform.position.y);
-         }
-         if (transform.position.x < -screenHalfWidth) //if we go beyond the left side of the screen, loop back to the right side
-         {
-             transform.position = new Vector2(screenHalfWidth, transform.position.y);
-         }
-         
-         //jump (this should go in FixedUpdate but its kinda buggy in there for some reason)
-         onGround = Physics2D.OverlapCircle(playerBottom.position, checkRadius, ground); //checks if our bottom object is overlapping any ground
-         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
-         {
-            canMove = false;
-            click_time = Time.time;
-         }
-         if(Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
-         {
-             canMove = true;
-             set_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
-             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-             if(is_right) {
-                 rb.AddForce((Vector2.right * jumpHeight)/4, ForceMode2D.Impulse);
-             }
-             else {
-                 rb.AddForce((Vector2.left * jumpHeight)/4, ForceMode2D.Impulse);
-             }
-         }
+        CheckLeftRight(); //checks whether we are going left or right
+        CheckOnGround(); //checks whether we are on a jumpable surface
+        Movement(); //moves player
+        Jumping(); //jumps  
     }
     void FixedUpdate()
     {
@@ -122,4 +91,54 @@ public class Player : MonoBehaviour
     {
         canMove = setCanMove;
     }
+    void Movement() //movement including looping when going off screen
+    {
+        float input = Input.GetAxisRaw("Horizontal"); //get direction input
+        float velocity = 0;
+        if (onGround && canMove == true)
+        {
+            velocity = input * speed; //so we know what direction to apply our speed in
+            transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
+        }
+
+        if (transform.position.x > screenHalfWidth) //if we go beyond the right side of the screen, loop back to the left side
+        {
+            transform.position = new Vector2(-screenHalfWidth, transform.position.y);
+        }
+        if (transform.position.x < -screenHalfWidth) //if we go beyond the left side of the screen, loop back to the right side
+        {
+            transform.position = new Vector2(screenHalfWidth, transform.position.y);
+        }
+    }
+    void Jumping() //jump (this should go in FixedUpdate but its kinda buggy in there for some reason)
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
+        {
+            canMove = false;
+            click_time = Time.time;
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
+        {
+            canMove = true;
+            set_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
+            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+            if (is_right)
+            {
+                rb.AddForce((Vector2.right * jumpHeight) / 4, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce((Vector2.left * jumpHeight) / 4, ForceMode2D.Impulse);
+            }
+        }
+    }
+    void CheckOnGround()
+    {
+        onGround = Physics2D.OverlapCircle(playerBottom.position, checkRadius, ground);
+        onCheckpoint = Physics2D.OverlapCircle(playerBottom.position, checkRadius, checkpoint);//checks if our bottom object is overlapping any ground
+        if (onCheckpoint)
+            onGround = true;
+    }
+
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    int lives = 3;
     public GameObject player;
     float cameraHalfHeight;
     int currRoom = 1;
@@ -39,7 +40,7 @@ public class Game : MonoBehaviour
 
     void OnGameOver()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void coroutineStarter()
@@ -48,6 +49,7 @@ public class Game : MonoBehaviour
     }
     public IEnumerator PlayerDeath()
     {
+        lives--;
         bool canMove = false;
         FindObjectOfType<Player>().setMove(canMove);
         player.SetActive(false);
@@ -56,5 +58,10 @@ public class Game : MonoBehaviour
         player.transform.position = new Vector3(0, -18.5f, 0);
         canMove = true;
         FindObjectOfType<Player>().setMove(canMove);
+    }
+
+    public int getLives()
+    {
+        return lives;
     }
 }

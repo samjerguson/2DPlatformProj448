@@ -5,12 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject player;
+    public Transform playerBottom; //passed in a child object's transform on the bottom of the player for checking when the bottom collides
     bool canMove = true;
     public event System.Action GameOver;
     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
      bool onGround; //used to check whether the player is on the ground or not
     bool onCheckpoint; //used to check whether or not the player is on a checkpoint
-    public Transform playerBottom; //passed in a child object on the bottom of the player for checking when the bottom collides
      public float checkRadius; //radius of the playerBottom object
      public LayerMask ground; //mask for ground objects only (things that can be jumped off of)
     public LayerMask checkpoint; //mask for checkpoint platforms
@@ -63,13 +63,13 @@ public class Player : MonoBehaviour
     }
     void CheckGameOver()
     {
-        gameOver = Physics2D.OverlapCircle(playerBottom.position, checkRadius, finishLine);
+        gameOver = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), finishLine);
         if (gameOver == true && GameOver != null)
         {
             GameOver();
         }
     }
-    void CheckLeftRight()
+    void CheckLeftRight() //is up is true if neither left nor right buttons are held
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -153,8 +153,8 @@ public class Player : MonoBehaviour
     }
     void CheckOnGround()
     {
-        onGround = Physics2D.OverlapCircle(playerBottom.position, checkRadius, ground);
-        onCheckpoint = Physics2D.OverlapCircle(playerBottom.position, checkRadius, checkpoint);//checks if our bottom object is overlapping any ground
+        onGround = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), ground);
+        onCheckpoint = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), checkpoint);//checks if our bottom object is overlapping any ground
         if (onCheckpoint)
             onGround = true;
     }

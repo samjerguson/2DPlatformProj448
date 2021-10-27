@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    bool canMove = true;
     public event System.Action GameOver;
     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
      bool onGround; //used to check whether the player is on the ground or not
@@ -36,11 +37,12 @@ public class Player : MonoBehaviour
         CheckLeftRight();
         float input = Input.GetAxisRaw("Horizontal"); //get direction input
         float velocity = 0;
-         if(onGround)
+         if(onGround && canMove == true)
          {
             velocity = input * speed; //so we know what direction to apply our speed in
-         }
-         transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
+            transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
+        }
+         
          if (transform.position.x > screenHalfWidth) //if we go beyond the right side of the screen, loop back to the left side
          {
              transform.position = new Vector2(-screenHalfWidth, transform.position.y);
@@ -54,10 +56,12 @@ public class Player : MonoBehaviour
          onGround = Physics2D.OverlapCircle(playerBottom.position, checkRadius, ground); //checks if our bottom object is overlapping any ground
          if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
          {
-             click_time = Time.time;
+            canMove = false;
+            click_time = Time.time;
          }
          if(Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
          {
+             canMove = true;
              set_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
              rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
              if(is_right) {
@@ -95,11 +99,11 @@ public class Player : MonoBehaviour
     }
     void CheckLeftRight()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             is_right = false;
         }
-        else if(Input.GetKeyDown(KeyCode.D))
+        else if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             is_right = true;
         }

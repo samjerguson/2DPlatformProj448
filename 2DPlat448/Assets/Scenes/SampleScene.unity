@@ -1807,7 +1807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBottom: {fileID: 179632155}
-  checkRadius: 0.28
+  checkRadius: 0.46
   ground:
     serializedVersion: 2
     m_Bits: 256

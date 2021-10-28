@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
      bool onGround; //used to check whether the player is on the ground or not
     bool onCheckpoint; //used to check whether or not the player is on a checkpoint
-     public float checkRadius; //radius of the playerBottom object
      public LayerMask ground; //mask for ground objects only (things that can be jumped off of)
     public LayerMask checkpoint; //mask for checkpoint platforms
     public LayerMask finishLine; //mask for the finish line, which ends the game

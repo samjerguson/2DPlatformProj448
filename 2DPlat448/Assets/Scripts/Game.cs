@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    public List<Transform> checkpoints = new List<Transform>();
     int lives = 3;
     public GameObject player;
     float cameraHalfHeight;
@@ -55,7 +56,7 @@ public class Game : MonoBehaviour
         player.SetActive(false);
         yield return new WaitForSecondsRealtime(1f);
         player.SetActive(true);
-        player.transform.position = new Vector3(0, -18.5f, 0);
+        player.transform.position = checkpoints[currRoom - 1].position;
         canMove = true;
         FindObjectOfType<Player>().setMove(canMove);
     }

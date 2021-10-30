@@ -1,2 +1,8 @@
 Used to help make timer - Alec McGlynn
 https://vionixstudio.com/2020/11/03/unity-timer-simplified/
+
+Used this tutorial to help learn Unity - Multiple Members of Group
+https://www.youtube.com/watch?v=_cCGBMmMOFw&list=PLFt_AvWsXl0fnA91TcmkRyhhixX9CO3Lw&ab_channel=SebastianLague
+
+Used this to learn about the Input.GetKeyUp() function - Ben Moeller
+https://docs.unity3d.com/ScriptReference/Input.GetKeyUp.html

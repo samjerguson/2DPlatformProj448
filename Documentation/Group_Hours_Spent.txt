@@ -18,3 +18,6 @@ Alec McGlynn
             Team meeting - 1 hr
             Making UML component diagram 1 hr
     10/29 - added timer 2 hours
+jiayi fu 
+        menu -2 hr 
+        stopbotton -1 hr

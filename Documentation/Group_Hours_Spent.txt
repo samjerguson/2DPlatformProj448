@@ -19,5 +19,7 @@ Alec McGlynn
             Making UML component diagram 1 hr
     10/29 - added timer 2 hours
 jiayi fu 
+        Setup of Unity -1 hr
+         meeting - 1 hr
         menu -2 hr 
         stopbotton -1 hr

@@ -4,9 +4,10 @@ Benjamin Moeller
     10/21 - Setup of Unity on computer - 1 hr
     10/22 - Group meeting plus working on UML document - 1 hr
     10/23 - Adding functionality of player to jump at different hieght levels - 45 minutes
-    10/25 - Making it so the player can't move around in midair, as well as doing documentation - 1hr
+    10/25 - Making it so the player can't move around in midair, as well as doing documentation - 1 hr
     10/28 - Adding the game over screen - 2 hrs
     10/29 - Adding some menu stuff to the game - 1 hr and 30 min
+    10/30 - Editing documentation - 30 min
 
 Blake Richmeier
     10/23 - Setup of Unity on computer - .5 hr
@@ -29,3 +30,5 @@ Sam Jerguson
     10/24 - 3 hrs: Finished camera work and other small changes
     10/26 - 1 hr: Disallowed movement while charging a jump
     10/27 - 5 hrs: Lots of miscellaneous changes
+
+Total Hours - 34.75 hrs

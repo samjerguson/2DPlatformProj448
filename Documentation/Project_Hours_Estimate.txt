@@ -4,4 +4,8 @@ Benjamin Moeller - 40 hours
 Sam Jerguson - 35 hrs
 Blake Richmeier - 35 hours
 jiayi fu - 35 hrs
-Alec McGlynn 32 hours
+Alec McGlynn - 32 hours
+
+Average Time - 35.4 hours
+
+We estimated the amount of time by sort of using an Agile method where we looked at how much time we spent on previous projects. We also had to take into account how long it would take everyone to get used to the Unity game engine, since not all of us had used it before. Most of us landed on a time between 30 - 40 hours since we wanted to focus on making a solid prototype that we could add more complicated features to in project 4, and this range seemed like a good estimate for how long the prototytpe would take

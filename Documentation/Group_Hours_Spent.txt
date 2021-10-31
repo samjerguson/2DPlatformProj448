@@ -23,3 +23,9 @@ jiayi fu
          meeting - 1 hr
         menu -2 hr 
         stopbotton -1 hr
+Sam Jerguson
+    10/20 - 2 hrs: setting up the project and implementign a simple jump
+    10/23 - 1 hr 30 mins: worked on camera changing when entering a new room
+    10/24 - 3 hrs: Finished camera work and other small changes
+    10/26 - 1 hr: Disallowed movement while charging a jump
+    10/27 - 5 hrs: Lots of miscellaneous changes

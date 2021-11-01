@@ -19,6 +19,7 @@ Alec McGlynn
             Team meeting - 1 hr
             Making UML component diagram 1 hr
     10/29 - added timer 2 hours
+    10/31 - Documentation - 45
 jiayi fu 
         Setup of Unity -1 hr
          meeting - 1 hr

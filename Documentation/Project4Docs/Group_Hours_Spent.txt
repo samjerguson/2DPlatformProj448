@@ -1,1 +1,4 @@
 //Text file to store total group hours spent on project
+
+Benjamin Moeller -
+11/7 - Created default idle sprite - 2 hrs

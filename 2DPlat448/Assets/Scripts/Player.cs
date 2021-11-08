@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     bool is_right = false; //tracks last recorded left or right input
     bool is_left = false; //tracks last recorded left or right input
     bool is_up = false; //if neither left or right is pressed
+    bool facing_right = true;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
      {
         CheckGameOver(); //checks if the game is over, and if so starts the event
         CheckLeftRight(); //checks whether we are going left or right
+        CheckFlipChar(); //checks whether to flip character sprite
         CheckOnGround(); //checks whether we are on a jumpable surface
         Movement(); //moves player
         Jumping(); //jumps  
@@ -156,6 +158,22 @@ public class Player : MonoBehaviour
         onCheckpoint = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), checkpoint);//checks if our bottom object is overlapping any ground
         if (onCheckpoint)
             onGround = true;
+    }
+
+    void CheckFlipChar()
+    {
+        if(is_left && facing_right) {
+            facing_right = !facing_right;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
+        else if(is_right && !facing_right) {
+            facing_right = !facing_right;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
     }
 
 }

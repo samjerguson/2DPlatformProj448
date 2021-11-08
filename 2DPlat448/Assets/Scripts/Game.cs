@@ -21,6 +21,10 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(lives == 0)
+        {
+            SceneManager.LoadScene(2);
+        }
         NewRoom(); //camera changes and checkpoint added
     }
 
@@ -41,7 +45,7 @@ public class Game : MonoBehaviour
 
     void OnGameOver()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void coroutineStarter()

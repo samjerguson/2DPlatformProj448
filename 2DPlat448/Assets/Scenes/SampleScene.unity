@@ -3973,6 +3973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1335541881}
+  animator: {fileID: 1335541885}
   playerBottom: {fileID: 71543053}
   ground:
     serializedVersion: 2

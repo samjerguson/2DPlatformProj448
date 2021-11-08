@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject player;
+    public Animator animator;
     public Transform playerBottom; //passed in a child object's transform on the bottom of the player for checking when the bottom collides
     bool canMove = true;
     public event System.Action GameOver;
@@ -130,11 +131,13 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
         {
+            animator.SetBool("isCrouching", true);
             canMove = false;
             click_time = Time.time;
         }
         if (Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
         {
+            animator.SetBool("isCrouching", false);
             canMove = true;
             set_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);

@@ -2,3 +2,4 @@
 
 Benjamin Moeller -
 11/7 - Created default idle sprite - 2 hrs
+11/8 - Edited player sprite and changed menu flow - 1.5 hrs

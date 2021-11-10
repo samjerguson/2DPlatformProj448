@@ -14,6 +14,7 @@ public class PowerUps : MonoBehaviour
 
     void PickUp(){
       Debug.Log("Picked up object");
+      FindObjectOfType<Game>().playerHeal();
       gameObject.SetActive(false);
     }
 }

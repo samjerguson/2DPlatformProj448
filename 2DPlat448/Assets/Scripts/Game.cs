@@ -61,6 +61,12 @@ public class Game : MonoBehaviour
         FindObjectOfType<Player>().setMove(canMove);
     }
 
+    public void playerHeal()
+    {
+        lives++;
+        bool canMove = false;
+    }
+
     public int getLives()
     {
         return lives;

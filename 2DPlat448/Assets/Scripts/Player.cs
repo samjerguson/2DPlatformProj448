@@ -117,13 +117,13 @@ public class Player : MonoBehaviour
             transform.Translate(Vector2.right * velocity * Time.deltaTime); //translate to the right (left if velocity is negative) at our velocity
         }
 
-        if (transform.position.x > screenHalfWidth) //if we go beyond the right side of the screen, loop back to the left side
+        if (transform.position.x > screenHalfWidth-2) //if we go beyond the right side of the screen, loop back to the left side
         {
-            transform.position = new Vector2(-screenHalfWidth, transform.position.y);
+            transform.position = new Vector2(-screenHalfWidth+2, transform.position.y);
         }
-        if (transform.position.x < -screenHalfWidth) //if we go beyond the left side of the screen, loop back to the right side
+        if (transform.position.x < -screenHalfWidth+2) //if we go beyond the left side of the screen, loop back to the right side
         {
-            transform.position = new Vector2(screenHalfWidth, transform.position.y);
+            transform.position = new Vector2(screenHalfWidth-2, transform.position.y);
         }
     }
     void Jumping() //jump (this should go in FixedUpdate but its kinda buggy in there for some reason)

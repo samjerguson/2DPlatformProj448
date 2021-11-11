@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TestSuite : MonoBehaviour
 {
@@ -10,9 +11,6 @@ public class TestSuite : MonoBehaviour
     private int step = 0;
     private bool can_press_y = false;
     private float seconds = 0f;
-
-    // public GameObject platform1 = GameObject.Find("test_plat1");
-    // public GameObject platform2 =GameObject.Find("test_plat2");
 
     // Start is called before the first frame update
     void Start()
@@ -68,12 +66,31 @@ public class TestSuite : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Y) && can_press_y) {
                 to_game2.text = "";
                 can_press_y = false;
+                seconds = 0f;
                 step++;
             }
         }
         else if(step == 4) {
-            // platform1.SetActive(true);
-            // platform2.SetActive(true);
+            seconds += Time.deltaTime;
+            to_game.text = "Now test jumping on top of the platforms";
+            if(seconds > 3f) {
+                to_game2.text = "If jumping on the platforms works, press y to continue";
+                can_press_y = true;
+            }
+            if(Input.GetKeyDown(KeyCode.Y) && can_press_y) {
+                to_game2.text = "";
+                can_press_y = false;
+                seconds = 0f;
+                step++;
+            }
+        }
+        else if(step == 5) {
+            to_game.text = "All the basic controls are a success, game is ready to be played";
+            to_game2.text = "Press y to go back to the game menu";
+            can_press_y = true;
+            if(Input.GetKeyDown(KeyCode.Y)) {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 }

@@ -775,8 +775,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   to_game: {fileID: 1098044236}
   to_game2: {fileID: 1666467592}
-  platform1: {fileID: 0}
-  platform2: {fileID: 0}
 --- !u!4 &1678900151
 Transform:
   m_ObjectHideFlags: 0
@@ -915,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 7481403468200878063, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2, type: 3}
@@ -1024,12 +1022,12 @@ PrefabInstance:
     - target: {fileID: 7481403468200878035, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.282527
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 7481403468200878035, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.452818
+      value: 7.95
       objectReference: {fileID: 0}
     - target: {fileID: 7481403468200878035, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2,
         type: 3}
@@ -1084,7 +1082,7 @@ PrefabInstance:
     - target: {fileID: 7481403468200878063, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb9ab0ce802c5e47a65a71b026b3eb2, type: 3}

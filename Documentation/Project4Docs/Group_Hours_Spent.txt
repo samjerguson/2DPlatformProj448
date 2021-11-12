@@ -6,3 +6,4 @@ Benjamin Moeller -
 11/8 - Added idle and crouch animations - 2 hrs
 11/9 - Started coding the test suite - 1 hrs
 11/10 - Finshed codign the test suite plus adjusted crouch animations - 1 hrs
+11/11 - Added jump animation plus other various tasks - 2 hrs

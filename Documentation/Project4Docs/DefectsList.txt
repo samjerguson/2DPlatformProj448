@@ -4,3 +4,7 @@
 Found that when adding the new player model in, it caused issues
 when the player went off the screen
 11-9 - fixed: Ben Moeller
+
+11/11 - Ben Moeller
+Found that the player can move before touching the ground
+??: not fixed yet

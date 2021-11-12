@@ -159,6 +159,11 @@ public class Player : MonoBehaviour
     {
         onGround = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), ground);
         onCheckpoint = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), checkpoint);//checks if our bottom object is overlapping any ground
+        if (!onGround) {
+            animator.SetBool("isInAir", true);
+        } else {
+            animator.SetBool("isInAir", false);
+        }
         if (onCheckpoint)
             onGround = true;
     }

@@ -1008,7 +1008,7 @@ MonoBehaviour:
   - {fileID: 1930066525}
   - {fileID: 1360766063}
   - {fileID: 846560559}
-  player: {fileID: 0}
+  player: {fileID: 791367050}
 --- !u!4 &408444898
 Transform:
   m_ObjectHideFlags: 0

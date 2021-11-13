@@ -16,6 +16,7 @@ public class Game : MonoBehaviour
     {
         FindObjectOfType<Player>().GameOver += OnGameOver; //now the GameOver event will call the OnGameOver method in this script, if necessary
         cameraHalfHeight = Camera.main.orthographicSize;
+        checkPreviousTimes();
     }
 
     // Update is called once per frame
@@ -45,6 +46,7 @@ public class Game : MonoBehaviour
 
     void OnGameOver()
     {
+        GameTimer.storeTime();
         SceneManager.LoadScene(3);
     }
 
@@ -73,5 +75,20 @@ public class Game : MonoBehaviour
     public int getLives()
     {
         return lives;
+    }
+
+    void checkPreviousTimes() {
+        float score1 = PlayerPrefs.GetFloat("score1");
+        float score2 = PlayerPrefs.GetFloat("score2");
+        float score3 = PlayerPrefs.GetFloat("score3");
+        float score4 = PlayerPrefs.GetFloat("score4");
+        float score5 = PlayerPrefs.GetFloat("score5");
+        if (score1 == 0 && score2 == 0 && score3 == 0 && score4 == 0 && score5 == 0) {
+            PlayerPrefs.SetFloat("score1", 999.99f);
+            PlayerPrefs.SetFloat("score2", 999.99f);
+            PlayerPrefs.SetFloat("score3", 999.99f);
+            PlayerPrefs.SetFloat("score4", 999.99f);
+            PlayerPrefs.SetFloat("score5", 999.99f);
+        }
     }
 }

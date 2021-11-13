@@ -170,17 +170,19 @@ public class Player : MonoBehaviour
 
     void CheckFlipChar()
     {
-        if(is_left && facing_right) {
+        if(onGround) {
+            if(is_left && facing_right) {
             facing_right = !facing_right;
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
-        }
-        else if(is_right && !facing_right) {
-            facing_right = !facing_right;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            }
+            else if(is_right && !facing_right) {
+                facing_right = !facing_right;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+            }
         }
     }
 

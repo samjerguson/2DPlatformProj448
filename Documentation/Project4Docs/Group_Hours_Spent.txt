@@ -7,3 +7,4 @@ Benjamin Moeller -
 11/9 - Started coding the test suite - 1 hrs
 11/10 - Finshed codign the test suite plus adjusted crouch animations - 1 hrs
 11/11 - Added jump animation plus other various tasks - 2 hrs
+11/12 - Added the start of the leaderboard - 1.5 hrs

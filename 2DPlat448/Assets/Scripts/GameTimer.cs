@@ -8,13 +8,16 @@ public class GameTimer : MonoBehaviour
 
 static public float seconds = 0.0f;
 public Text disvar;
+static public bool notInMenu = true;
 
 void Update() 
-{              
-  seconds += Time.deltaTime;
-  int minutes = ((int)seconds) / 60; 
-  double b = System.Math.Round(seconds % 60, 2);
-  disvar.text = minutes.ToString("0") + ":" + b.ToString() + "s";      
+{        
+  if(notInMenu) {
+        seconds += Time.deltaTime;
+        int minutes = ((int)seconds) / 60; 
+        double b = System.Math.Round(seconds % 60, 2);
+        disvar.text = minutes.ToString("0") + ":" + b.ToString() + "s";  
+  }          
 }
 
 static public void storeTime() {
@@ -43,6 +46,10 @@ static public void storeTime() {
   else if(seconds < PlayerPrefs.GetFloat("score5")) {
       PlayerPrefs.SetFloat("score5", seconds);
   }
+}
+
+public void changeInMenu() {
+    notInMenu = !notInMenu;
 }
 
 }

@@ -34,6 +34,7 @@ public class Game : MonoBehaviour
         MediumEnemyMovement();
         if(lives == 0)
         {
+            GameTimer.seconds = 0f;
             SceneManager.LoadScene(2);
         }
         NewRoom(); //camera changes and checkpoint added

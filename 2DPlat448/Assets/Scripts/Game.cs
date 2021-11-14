@@ -15,6 +15,8 @@ public class Game : MonoBehaviour
     public GameObject player;
     float cameraHalfHeight;
     int currRoom = 1;
+    bool immune = false;
+    float time_immune = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,9 @@ public class Game : MonoBehaviour
             GameTimer.seconds = 0f;
             SceneManager.LoadScene(2);
         }
+        if(Time.time - time_immune > 3) {
+            immune = false;
+        }
         NewRoom(); //camera changes and checkpoint added
     }
 
@@ -57,7 +62,7 @@ public class Game : MonoBehaviour
 
     void OnGameOver()
     {
-        GameTimer.storeTime();
+        GameTimer.storeTime(GameTimer.seconds);
         SceneManager.LoadScene(3);
     }
 
@@ -67,15 +72,20 @@ public class Game : MonoBehaviour
     }
     public IEnumerator PlayerDeath()
     {
-        lives--;
-        bool canMove = false;
-        FindObjectOfType<Player>().setMove(canMove);
-        player.SetActive(false);
-        yield return new WaitForSecondsRealtime(1f);
-        player.SetActive(true);
-        player.transform.position = checkpoints[currRoom - 1].position;
-        canMove = true;
-        FindObjectOfType<Player>().setMove(canMove);
+        if(!immune)
+        {
+            immune = true;
+            time_immune = Time.time;
+            lives--;
+            bool canMove = false;
+            FindObjectOfType<Player>().setMove(canMove);
+            player.SetActive(false);
+            yield return new WaitForSecondsRealtime(1f);
+            player.SetActive(true);
+            player.transform.position = checkpoints[currRoom - 1].position;
+            canMove = true;
+            FindObjectOfType<Player>().setMove(canMove);
+        }
     }
 
     public void playerHeal()
@@ -94,11 +104,19 @@ public class Game : MonoBehaviour
         float score3 = PlayerPrefs.GetFloat("score3");
         float score4 = PlayerPrefs.GetFloat("score4");
         float score5 = PlayerPrefs.GetFloat("score5");
-        if (score1 == 0 && score2 == 0 && score3 == 0 && score4 == 0 && score5 == 0) {
+        if(score1 == 0) {
             PlayerPrefs.SetFloat("score1", 999.99f);
+        }
+        if(score2 == 0) {
             PlayerPrefs.SetFloat("score2", 999.99f);
+        }
+        if(score3 == 0) {
             PlayerPrefs.SetFloat("score3", 999.99f);
+        }
+        if(score4 == 0) {
             PlayerPrefs.SetFloat("score4", 999.99f);
+        }
+        if(score5 == 0) {
             PlayerPrefs.SetFloat("score5", 999.99f);
         }
     }

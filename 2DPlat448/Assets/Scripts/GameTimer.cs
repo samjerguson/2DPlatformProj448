@@ -9,6 +9,7 @@ public class GameTimer : MonoBehaviour
 static public float seconds = 0.0f;
 public Text disvar;
 static public bool notInMenu = true;
+static public float final = 0.0f;
 
 void Update() 
 {        
@@ -22,31 +23,32 @@ void Update()
   }          
 }
 
-static public void storeTime() {
-  if(seconds < PlayerPrefs.GetFloat("score1")) {
+static public void storeTime(float final_seconds) {
+    final = final_seconds;
+  if(final_seconds < PlayerPrefs.GetFloat("score1")) {
       PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
       PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
       PlayerPrefs.SetFloat("score3", PlayerPrefs.GetFloat("score2"));
       PlayerPrefs.SetFloat("score2", PlayerPrefs.GetFloat("score1"));
-      PlayerPrefs.SetFloat("score1", seconds);
+      PlayerPrefs.SetFloat("score1", final_seconds);
   }
-  else if(seconds < PlayerPrefs.GetFloat("score2")) {
+  else if(final_seconds < PlayerPrefs.GetFloat("score2")) {
       PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
       PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
       PlayerPrefs.SetFloat("score3", PlayerPrefs.GetFloat("score2"));
-      PlayerPrefs.SetFloat("score2", seconds);
+      PlayerPrefs.SetFloat("score2", final_seconds);
   }
-  else if(seconds < PlayerPrefs.GetFloat("score3")) {
+  else if(final_seconds < PlayerPrefs.GetFloat("score3")) {
       PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
       PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
-      PlayerPrefs.SetFloat("score3", seconds);
+      PlayerPrefs.SetFloat("score3", final_seconds);
   }
-  else if(seconds < PlayerPrefs.GetFloat("score4")) {
+  else if(final_seconds < PlayerPrefs.GetFloat("score4")) {
       PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
-      PlayerPrefs.SetFloat("score4", seconds);
+      PlayerPrefs.SetFloat("score4", final_seconds);
   }
-  else if(seconds < PlayerPrefs.GetFloat("score5")) {
-      PlayerPrefs.SetFloat("score5", seconds);
+  else if(final_seconds < PlayerPrefs.GetFloat("score5")) {
+      PlayerPrefs.SetFloat("score5", final_seconds);
   }
 }
 

@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
     public GameObject player;
     float cameraHalfHeight;
     int currRoom = 1;
-    bool immune = false;
+    static public bool immune = false;
     float time_immune = 0f;
 
     // Start is called before the first frame update

@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         CheckOnGround(); //checks whether we are on a jumpable surface
         Movement(); //moves player
         Jumping(); //jumps  
+        CheckIfImmune();
     }
     void FixedUpdate()
     {
@@ -59,13 +60,13 @@ public class Player : MonoBehaviour
     //Sets jumpHeight depending on how long a key was pressed (value of jumpHeight is limited between 10 to 30)
     void set_jumpHeight(float time)
     {
-        jumpHeight = (int) (time * 30f);
-        if (jumpHeight < 10) {
-            jumpHeight = 10;
+        jumpHeight = (int) (time * 32f);
+        if (jumpHeight < 15) {
+            jumpHeight = 15;
         }
-        else if (jumpHeight > 30)
+        else if (jumpHeight > 32)
         {
-            jumpHeight = 30;
+            jumpHeight = 32;
         }
     }
     void CheckGameOver()
@@ -197,6 +198,15 @@ public class Player : MonoBehaviour
                 theScale.x *= -1;
                 transform.localScale = theScale;
             }
+        }
+    }
+
+    void CheckIfImmune()
+    {
+        if(Game.immune) {
+            animator.SetBool("isImmune", true);
+        } else {
+            animator.SetBool("isImmune", false);
         }
     }
 }

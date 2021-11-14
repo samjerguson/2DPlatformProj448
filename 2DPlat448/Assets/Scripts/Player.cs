@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float feetColliderSize;
     public GameObject player;
     public Animator animator;
-    public Transform playerBottom; //passed in a child object's transform on the bottom of the player for checking when the bottom collides
     bool canMove = true;
     public event System.Action GameOver;
     Rigidbody2D rb; //rigidbody object we will set to the Player rigidbody
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     }
     void CheckGameOver()
     {
-        gameOver = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), finishLine);
+        gameOver = Physics2D.OverlapArea(new Vector2(transform.position.x - .75f, transform.position.y - 2f), new Vector2(transform.position.x + .75f, (transform.position.y - 2f) - feetColliderSize), finishLine);
         if (gameOver == true && GameOver != null)
         {
             GameOver();
@@ -157,8 +157,8 @@ public class Player : MonoBehaviour
     }
     void CheckOnGround()
     {
-        onGround = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), ground);
-        onCheckpoint = Physics2D.OverlapArea(new Vector2(playerBottom.position.x - playerBottom.localScale.x, playerBottom.position.y + playerBottom.localScale.x), new Vector2(playerBottom.position.x + playerBottom.localScale.x, playerBottom.position.y - playerBottom.localScale.x), checkpoint);//checks if our bottom object is overlapping any ground
+        onGround = Physics2D.OverlapArea(new Vector2(transform.position.x - .75f, transform.position.y - 2f), new Vector2(transform.position.x + .75f, (transform.position.y - 2f) - feetColliderSize), ground);
+        onCheckpoint = Physics2D.OverlapArea(new Vector2(transform.position.x - .75f, transform.position.y - 2f), new Vector2(transform.position.x + .75f, (transform.position.y - 2f) - feetColliderSize), checkpoint);//checks if our bottom object is overlapping any ground
         if (!onGround && !onCheckpoint) {
             animator.SetBool("isInAir", true);
         } else {
@@ -185,5 +185,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-
 }

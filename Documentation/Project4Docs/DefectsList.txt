@@ -7,4 +7,4 @@ when the player went off the screen
 
 11/11 - Ben Moeller
 Found that the player can move before touching the ground
-??: not fixed yet
+11/14 - fixed: Sam and Ben

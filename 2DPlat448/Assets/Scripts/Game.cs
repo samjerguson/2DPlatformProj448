@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    public float waitTime;
+    public List<bool> movingLeft;
+    public int enemySpeed = 7;
+    public List<Transform> mediumEnemyPaths;
+    public List<Transform> mediumEnemies; 
     public List<Transform> checkpoints = new List<Transform>();
     int lives = 3;
     public GameObject player;
@@ -17,11 +22,16 @@ public class Game : MonoBehaviour
         FindObjectOfType<Player>().GameOver += OnGameOver; //now the GameOver event will call the OnGameOver method in this script, if necessary
         cameraHalfHeight = Camera.main.orthographicSize;
         checkPreviousTimes();
+        mediumEnemies[0].position = mediumEnemyPaths[0].position;
+        mediumEnemies[1].position = mediumEnemyPaths[2].position;
+        mediumEnemies[2].position = mediumEnemyPaths[4].position;
+        //StartCoroutine(MediumEnemyMovement()); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        MediumEnemyMovement();
         if(lives == 0)
         {
             SceneManager.LoadScene(2);
@@ -91,4 +101,35 @@ public class Game : MonoBehaviour
             PlayerPrefs.SetFloat("score5", 999.99f);
         }
     }
+    void MediumEnemyMovement()
+    {
+        //while (true)
+        //{
+            for (int i = 0; i < mediumEnemies.Count; i++)
+            {
+                if (movingLeft[i] == true)
+                {
+                    mediumEnemies[i].position = Vector3.MoveTowards(mediumEnemies[i].position, mediumEnemyPaths[2 * i].position, enemySpeed * Time.deltaTime);
+                    //mediumEnemies[i].position += (mediumEnemyPaths[2 * i].position - mediumEnemies[i].position).normalized * enemySpeed * Time.deltaTime;
+                    if (mediumEnemies[i].position.x < mediumEnemyPaths[2 * i].position.x + 1)
+                    {
+                        movingLeft[i] = false;
+                        //yield return new WaitForSeconds(waitTime);
+                    }
+                    //yield return null;
+                }
+                else
+                {
+                    mediumEnemies[i].position = Vector3.MoveTowards(mediumEnemies[i].position, mediumEnemyPaths[(2 * i) + 1].position, enemySpeed * Time.deltaTime);
+                    //mediumEnemies[i].position += (mediumEnemyPaths[(2 * i) + 1].position - mediumEnemies[0].position).normalized * enemySpeed * Time.deltaTime;
+                    if (mediumEnemies[i].position.x > mediumEnemyPaths[(2 * i) + 1].position.x - 1)
+                    {
+                        movingLeft[i] = true;
+                        //yield return new WaitForSeconds(waitTime);
+                    }
+                    //yield return null;
+                }
+            }
+        //
+    }       
 }

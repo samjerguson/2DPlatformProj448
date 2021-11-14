@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public BoxCollider2D b;
     BoxCollider2D bTemp;
-    public float feetColliderSize;
+    float feetColliderSize;
     public GameObject player;
     public Animator animator;
     bool canMove = true;
@@ -27,11 +27,13 @@ public class Player : MonoBehaviour
     bool is_left = false; //tracks last recorded left or right input
     bool is_up = false; //if neither left or right is pressed
     bool facing_right = true;
+    bool previous_bool;
 
     // Start is called before the first frame update
     void Start()
      {
         bTemp = b;
+        feetColliderSize = 0.5f;
          rb = GetComponent<Rigidbody2D>(); //sets rb to the Player rigidbody
         rb.freezeRotation = true; //stop cube from rotating due to physics
         float halfPlayerWidth = transform.localScale.x / 2f; //gets half the player width (so we can offset this amount when going off screen)
@@ -135,6 +137,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
         {
             animator.SetBool("isCrouching", true);
+            feetColliderSize = 0.5f;
             canMove = false;
             click_time = Time.time;
         }
@@ -169,6 +172,12 @@ public class Player : MonoBehaviour
             animator.SetBool("isInAir", false);
             b.size = new Vector2(.2f, .46f);
         }
+        if(previous_bool == false) {
+            if (onGround) {
+                feetColliderSize = 7;
+            }
+        }
+        previous_bool = onGround;
         if (onCheckpoint)
             onGround = true;
     }

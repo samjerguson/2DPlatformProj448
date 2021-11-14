@@ -2898,7 +2898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   b: {fileID: 791367052}
-  feetColliderSize: 0.65
+  feetColliderSize: 0.75
   player: {fileID: 791367050}
   animator: {fileID: 791367051}
   ground:

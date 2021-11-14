@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public BoxCollider2D b;
+    BoxCollider2D bTemp;
     public float feetColliderSize;
     public GameObject player;
     public Animator animator;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
      {
+        bTemp = b;
          rb = GetComponent<Rigidbody2D>(); //sets rb to the Player rigidbody
         rb.freezeRotation = true; //stop cube from rotating due to physics
         float halfPlayerWidth = transform.localScale.x / 2f; //gets half the player width (so we can offset this amount when going off screen)
@@ -161,8 +164,10 @@ public class Player : MonoBehaviour
         onCheckpoint = Physics2D.OverlapArea(new Vector2(transform.position.x - .75f, transform.position.y - 2f), new Vector2(transform.position.x + .75f, (transform.position.y - 2f) - feetColliderSize), checkpoint);//checks if our bottom object is overlapping any ground
         if (!onGround && !onCheckpoint) {
             animator.SetBool("isInAir", true);
+            b.size = new Vector2(.2f, .2f);
         } else {
             animator.SetBool("isInAir", false);
+            b.size = new Vector2(.2f, .46f);
         }
         if (onCheckpoint)
             onGround = true;

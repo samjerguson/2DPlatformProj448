@@ -16,7 +16,9 @@ void Update()
         seconds += Time.deltaTime;
         int minutes = ((int)seconds) / 60; 
         double b = System.Math.Round(seconds % 60, 2);
-        disvar.text = minutes.ToString("0") + ":" + b.ToString() + "s";  
+        if (disvar != null) {
+            disvar.text = minutes.ToString("0") + ":" + b.ToString() + "s";  
+        }
   }          
 }
 

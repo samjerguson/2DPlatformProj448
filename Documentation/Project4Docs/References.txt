@@ -1,1 +1,7 @@
-//Text file to hold any references used in this project
+//Text file to hold any references used in this 
+
+Ben Moeller - https://docs.unity3d.com/ScriptReference/PlayerPrefs.html
+Learned about how to store player data with PlayerPrefs from this website
+
+Ben Moeller - https://www.youtube.com/watch?v=hkaysu1Z-N8&list=WL&index=2&t=1167s&ab_channel=Brackeys
+Learned how to make basic 2d animation from this video

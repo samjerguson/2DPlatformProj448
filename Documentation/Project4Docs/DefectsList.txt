@@ -8,3 +8,7 @@ when the player went off the screen
 11/11 - Ben Moeller
 Found that the player can move before touching the ground
 11/14 - fixed: Sam and Ben
+
+11/12 - Ben Moeller
+Found that the leaderboard is not changing right when there is more than 1 score added
+11/14 - fixed: Ben Moeller

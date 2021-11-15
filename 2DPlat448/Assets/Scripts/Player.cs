@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     bool is_up = false; //if neither left or right is pressed
     bool facing_right = true;
     bool previous_bool;
+    bool was_held;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour
     {
         jumpHeight = (int) (time * 30f);
         if (jumpHeight < 10) {
-            jumpHeight = 10;
+            jumpHeight = 15;
         }
         else if (jumpHeight > 30)
         {
@@ -137,15 +138,22 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
         {
             animator.SetBool("isCrouching", true);
-            feetColliderSize = 0.5f;
             canMove = false;
             click_time = Time.time;
+            was_held = true;
         }
         if (Input.GetKeyUp(KeyCode.Space) && onGround == true) // player has lifted key up, uppward force with set jumpHeight
         {
             animator.SetBool("isCrouching", false);
+            feetColliderSize = 0.5f;
             canMove = true;
-            set_jumpHeight(Time.time - click_time); //sets jump height based on how much time button is held down
+            float value;
+            if(was_held) {
+                value = Time.time - click_time;
+            } else {
+                value = 0;
+            }
+            set_jumpHeight(value); //sets jump height based on how much time button is held down
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
             if (is_right)
             {
@@ -159,6 +167,7 @@ public class Player : MonoBehaviour
             {
                 rb.AddForce((Vector2.up * jumpHeight) / 4, ForceMode2D.Impulse);
             }
+            was_held = false;
         }
     }
     void CheckOnGround()
@@ -174,7 +183,7 @@ public class Player : MonoBehaviour
         }
         if(previous_bool == false) {
             if (onGround) {
-                feetColliderSize = 8;
+                feetColliderSize = 25;
             }
         }
         previous_bool = onGround;

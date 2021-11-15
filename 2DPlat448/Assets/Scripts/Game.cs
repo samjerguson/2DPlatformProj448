@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
     static public bool immune = false;
     float time_immune = 0f;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,11 +100,15 @@ public class Game : MonoBehaviour
     }
 
     void setPreviousTimes() {
-        PlayerPrefs.SetFloat("score1", 999.99f);
-        PlayerPrefs.SetFloat("score2", 999.99f);
-        PlayerPrefs.SetFloat("score3", 999.99f);
-        PlayerPrefs.SetFloat("score4", 999.99f);
-        PlayerPrefs.SetFloat("score5", 999.99f);
+        if(PlayerPrefs.GetFloat("score1") != 999.99f){
+            print("did nothing");
+        } else {
+            PlayerPrefs.SetFloat("score1", 999.99f);
+            PlayerPrefs.SetFloat("score2", 999.99f);
+            PlayerPrefs.SetFloat("score3", 999.99f);
+            PlayerPrefs.SetFloat("score4", 999.99f);
+            PlayerPrefs.SetFloat("score5", 999.99f);
+        }
     }
 
     void MediumEnemyMovement()

@@ -25,31 +25,31 @@ void Update()
 
 static public void storeTime(float final_seconds) {
     final = final_seconds;
-  if(final_seconds < PlayerPrefs.GetFloat("score1")) {
-      PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
-      PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
-      PlayerPrefs.SetFloat("score3", PlayerPrefs.GetFloat("score2"));
-      PlayerPrefs.SetFloat("score2", PlayerPrefs.GetFloat("score1"));
-      PlayerPrefs.SetFloat("score1", final_seconds);
-  }
-  else if(final_seconds < PlayerPrefs.GetFloat("score2")) {
-      PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
-      PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
-      PlayerPrefs.SetFloat("score3", PlayerPrefs.GetFloat("score2"));
-      PlayerPrefs.SetFloat("score2", final_seconds);
-  }
-  else if(final_seconds < PlayerPrefs.GetFloat("score3")) {
-      PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
-      PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
-      PlayerPrefs.SetFloat("score3", final_seconds);
-  }
-  else if(final_seconds < PlayerPrefs.GetFloat("score4")) {
-      PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
-      PlayerPrefs.SetFloat("score4", final_seconds);
-  }
-  else if(final_seconds < PlayerPrefs.GetFloat("score5")) {
-      PlayerPrefs.SetFloat("score5", final_seconds);
-  }
+    if(final_seconds < PlayerPrefs.GetFloat("score1")) {
+        PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
+        PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
+        PlayerPrefs.SetFloat("score3", PlayerPrefs.GetFloat("score2"));
+        PlayerPrefs.SetFloat("score2", PlayerPrefs.GetFloat("score1"));
+        PlayerPrefs.SetFloat("score1", final_seconds);
+    }
+    else if(final_seconds < PlayerPrefs.GetFloat("score2")) {
+        PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
+        PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
+        PlayerPrefs.SetFloat("score3", PlayerPrefs.GetFloat("score2"));
+        PlayerPrefs.SetFloat("score2", final_seconds);
+    }
+    else if(final_seconds < PlayerPrefs.GetFloat("score3")) {
+        PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
+        PlayerPrefs.SetFloat("score4", PlayerPrefs.GetFloat("score3"));
+        PlayerPrefs.SetFloat("score3", final_seconds);
+    }
+    else if(final_seconds < PlayerPrefs.GetFloat("score4")) {
+        PlayerPrefs.SetFloat("score5", PlayerPrefs.GetFloat("score4"));
+        PlayerPrefs.SetFloat("score4", final_seconds);
+    }
+    else if(final_seconds < PlayerPrefs.GetFloat("score5")) {
+        PlayerPrefs.SetFloat("score5", final_seconds);
+    }
 }
 
 public void changeInMenu() {

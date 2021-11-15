@@ -60,13 +60,13 @@ public class Player : MonoBehaviour
     //Sets jumpHeight depending on how long a key was pressed (value of jumpHeight is limited between 10 to 30)
     void set_jumpHeight(float time)
     {
-        jumpHeight = (int) (time * 32f);
-        if (jumpHeight < 15) {
-            jumpHeight = 15;
+        jumpHeight = (int) (time * 30f);
+        if (jumpHeight < 10) {
+            jumpHeight = 10;
         }
-        else if (jumpHeight > 32)
+        else if (jumpHeight > 30)
         {
-            jumpHeight = 32;
+            jumpHeight = 30;
         }
     }
     void CheckGameOver()
@@ -134,7 +134,6 @@ public class Player : MonoBehaviour
     }
     void Jumping() //jump (this should go in FixedUpdate but its kinda buggy in there for some reason)
     {
-        
         if (Input.GetKeyDown(KeyCode.Space) && onGround == true) //when space is first pressed down, start the timer
         {
             animator.SetBool("isCrouching", true);
@@ -175,7 +174,7 @@ public class Player : MonoBehaviour
         }
         if(previous_bool == false) {
             if (onGround) {
-                feetColliderSize = 7;
+                feetColliderSize = 8;
             }
         }
         previous_bool = onGround;

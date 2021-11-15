@@ -20,12 +20,4 @@ public class leaderboardManager : MonoBehaviour
         score4.text += " " + PlayerPrefs.GetFloat("score4").ToString();
         score5.text += " " + PlayerPrefs.GetFloat("score5").ToString();
     }
-
-    public void resetLeaderboard() {
-        PlayerPrefs.SetFloat("score1", 999.99f);
-        PlayerPrefs.SetFloat("score2", 999.99f);
-        PlayerPrefs.SetFloat("score3", 999.99f);
-        PlayerPrefs.SetFloat("score4", 999.99f);
-        PlayerPrefs.SetFloat("score5", 999.99f);
-    }
 }

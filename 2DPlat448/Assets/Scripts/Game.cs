@@ -23,7 +23,7 @@ public class Game : MonoBehaviour
     {
         FindObjectOfType<Player>().GameOver += OnGameOver; //now the GameOver event will call the OnGameOver method in this script, if necessary
         cameraHalfHeight = Camera.main.orthographicSize;
-        checkPreviousTimes();
+        setPreviousTimes();
         mediumEnemies[0].position = mediumEnemyPaths[0].position;
         mediumEnemies[1].position = mediumEnemyPaths[2].position;
         mediumEnemies[2].position = mediumEnemyPaths[4].position;
@@ -98,28 +98,14 @@ public class Game : MonoBehaviour
         return lives;
     }
 
-    void checkPreviousTimes() {
-        float score1 = PlayerPrefs.GetFloat("score1");
-        float score2 = PlayerPrefs.GetFloat("score2");
-        float score3 = PlayerPrefs.GetFloat("score3");
-        float score4 = PlayerPrefs.GetFloat("score4");
-        float score5 = PlayerPrefs.GetFloat("score5");
-        if(score1 == 0) {
-            PlayerPrefs.SetFloat("score1", 999.99f);
-        }
-        if(score2 == 0) {
-            PlayerPrefs.SetFloat("score2", 999.99f);
-        }
-        if(score3 == 0) {
-            PlayerPrefs.SetFloat("score3", 999.99f);
-        }
-        if(score4 == 0) {
-            PlayerPrefs.SetFloat("score4", 999.99f);
-        }
-        if(score5 == 0) {
-            PlayerPrefs.SetFloat("score5", 999.99f);
-        }
+    void setPreviousTimes() {
+        PlayerPrefs.SetFloat("score1", 999.99f);
+        PlayerPrefs.SetFloat("score2", 999.99f);
+        PlayerPrefs.SetFloat("score3", 999.99f);
+        PlayerPrefs.SetFloat("score4", 999.99f);
+        PlayerPrefs.SetFloat("score5", 999.99f);
     }
+
     void MediumEnemyMovement()
     {
         //while (true)

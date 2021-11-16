@@ -1,3 +1,4 @@
 //Text file to store how long each member thinks the project will take in total
 
 Benjamin Moeller - 45 hrs
+Alec McGlynn - 30 hrs

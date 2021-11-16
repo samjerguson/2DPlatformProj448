@@ -10,3 +10,6 @@ Benjamin Moeller -
 11/12 - Added the start of the leaderboard - 1.5 hrs
 11/13 - Helping fix player and working on leaderboard - 3 hrs
 11/14 - Fixing leaderboard and making finalizing immunity frames - 3 hrs
+
+Alec McGlynn
+11/16 - Updated level design - 2 hrs

@@ -8,30 +8,34 @@ public class BinaryEnemy : MonoBehaviour
     public float risingRate;
     public float frameRate;
     public int waitTime;
+
     public Material mat;
     public List<Texture> texture;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(TextureChange());
+        if(MainMenu.isHard) {
+            StartCoroutine(TextureChange());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(MoveBinary());
+        if(MainMenu.isHard) {
+            StartCoroutine(MoveBinary());     
+        }
     }
 
     IEnumerator TextureChange()
     {
         int i = 0;
-        while (true)
+        while(true)
         {
             i++;
             mat.mainTexture = texture[i % 21];
             yield return new WaitForSeconds(frameRate);
         }
-        yield return null;
     }
 
     IEnumerator MoveBinary()

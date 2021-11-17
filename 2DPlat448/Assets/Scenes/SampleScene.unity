@@ -4313,7 +4313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   risingRate: 0.75
   frameRate: 0.08
-  waitTime: 3
+  waitTime: 7
   mat: {fileID: 2100000, guid: a56044e53bee3d2438dc4de8e2d73145, type: 2}
   texture:
   - {fileID: 2800000, guid: 5d8bcfc338cd62045a7989c8cb639a5d, type: 3}

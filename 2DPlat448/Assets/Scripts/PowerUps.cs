@@ -6,6 +6,14 @@ public class PowerUps : MonoBehaviour
 {
     public GameObject pickupEffect;
 
+    void Start()
+    {
+        if (MainMenu.isHard)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other){
       if(other.CompareTag("Player")){
         PickUp();

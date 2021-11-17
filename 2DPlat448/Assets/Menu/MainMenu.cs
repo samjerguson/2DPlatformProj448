@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    static public bool isEasy = false;
-    static public bool isMedium = false;
-    static public bool isHard = false;
+    static public bool isEasy;
+    static public bool isMedium;
+    static public bool isHard;
+    
+    void Start() {
+        isEasy = false;
+        isMedium = false;
+        isHard = false;
+    }
 
     public void PlayGameEasy()
     {

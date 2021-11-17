@@ -4311,9 +4311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405a3ba93d823aa459386e5d803ca355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  risingRate: 0.75
+  risingRate: 1.4
   frameRate: 0.08
-  waitTime: 7
+  waitTime: 8
   mat: {fileID: 2100000, guid: a56044e53bee3d2438dc4de8e2d73145, type: 2}
   texture:
   - {fileID: 2800000, guid: 5d8bcfc338cd62045a7989c8cb639a5d, type: 3}
@@ -5390,7 +5390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.73, y: -34.007324}
+  m_AnchoredPosition: {x: 400, y: -49}
   m_SizeDelta: {x: 207.99017, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1569663070 stripped
@@ -6441,7 +6441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -14, y: -14.5}
   m_SizeDelta: {x: 203.73727, y: 69}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2064766076

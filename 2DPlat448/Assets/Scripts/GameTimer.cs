@@ -6,10 +6,15 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
 
-static public float seconds = 0.0f;
+static public float seconds;
 public Text disvar;
-static public bool notInMenu = true;
+static public bool notInMenu;
 static public float final = 0.0f;
+
+void Start() {
+    notInMenu = true;
+    seconds = 0f;
+}
 
 void Update() 
 {        

@@ -23,7 +23,7 @@ public class BinaryEnemy : MonoBehaviour
     void Update()
     {
         if(MainMenu.isHard) {
-            StartCoroutine(MoveBinary());     
+            StartCoroutine(MoveBinary());
         }
     }
 

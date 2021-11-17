@@ -30,6 +30,10 @@ public class Game : MonoBehaviour
         mediumEnemies[0].position = mediumEnemyPaths[0].position;
         mediumEnemies[1].position = mediumEnemyPaths[2].position;
         mediumEnemies[2].position = mediumEnemyPaths[4].position;
+        mediumEnemies[3].position = mediumEnemyPaths[6].position;
+        mediumEnemies[4].position = mediumEnemyPaths[8].position;
+        mediumEnemies[5].position = mediumEnemyPaths[10].position;
+        mediumEnemies[6].position = mediumEnemyPaths[12].position;
         //StartCoroutine(MediumEnemyMovement()); 
     }
 

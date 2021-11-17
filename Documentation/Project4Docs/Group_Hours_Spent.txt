@@ -14,11 +14,12 @@ Benjamin Moeller -
 
 Alec McGlynn
 11/16 - Updated level design - 2 hrs
+11/17 - Added wrap-around jump - .5 hrs
 
 
 jiayi fu
 
       find music- 1.5 hrs
-      work on code- 2 hus
-      fix the code - 2 hurs
+      work on code- 2 hrs
+      fix the code - 2 hrs
       text music part-1 hrs

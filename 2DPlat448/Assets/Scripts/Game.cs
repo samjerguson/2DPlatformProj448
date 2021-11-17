@@ -21,7 +21,9 @@ public class Game : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   if(MainMenu.isHard) {
+            lives = 1;
+        }
         FindObjectOfType<Player>().GameOver += OnGameOver; //now the GameOver event will call the OnGameOver method in this script, if necessary
         cameraHalfHeight = Camera.main.orthographicSize;
         setPreviousTimes();
@@ -34,7 +36,9 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MediumEnemyMovement();
+        if(MainMenu.isMedium) {
+            MediumEnemyMovement();
+        }
         if(lives == 0)
         {
             GameTimer.seconds = 0f;

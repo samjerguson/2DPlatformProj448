@@ -5,11 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    static public bool isEasy = false;
+    static public bool isMedium = false;
+    static public bool isHard = false;
+
+    public void PlayGameEasy()
     {
-        GameTimer.notInMenu = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        isEasy = true;
+        SceneManager.LoadScene(1);
     }
+
+    public void PlayGameMedium()
+    {
+        isMedium = true;
+        SceneManager.LoadScene(1);
+    }
+
+    public void PlayGameHard()
+    {
+        isHard = true;
+        SceneManager.LoadScene(1);
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");

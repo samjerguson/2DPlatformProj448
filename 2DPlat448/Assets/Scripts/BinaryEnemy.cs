@@ -11,13 +11,17 @@ public class BinaryEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(TextureChange());
+        if(MainMenu.isHard) {
+            StartCoroutine(TextureChange());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * risingRate * Time.deltaTime); //binary code block moves UP (I had to turn it upside down)       
+        if(MainMenu.isHard) {
+            transform.Translate(Vector3.down * risingRate * Time.deltaTime); //binary code block moves UP (I had to turn it upside down)       
+        }
     }
 
     IEnumerator TextureChange()

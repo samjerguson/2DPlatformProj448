@@ -40,7 +40,7 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MainMenu.isMedium) {
+        if(MainMenu.isMedium || MainMenu.isHard) {
             MediumEnemyMovement();
         }
         if(lives == 0)

@@ -23,3 +23,13 @@ jiayi fu
       work on code- 2 hrs
       fix the code - 2 hrs
       text music part-1 hrs
+
+Blake Richmeier
+11/5 - researched unity engine and libraries/watched tutorials - 3 hours
+11/8 - Added power Up objects into the game - 1 hour
+11/9 - Added functionality to the power ups - 2 hours
+11/16 - made backgrounds for the screens - .5 hours
+11/17 - added the backgrounds into the game - 1 hour
+11/17 - filmed video for intro and hard mode - 2 hours
+11/18 - edited final video and posted to YouTube - 1 hour
+

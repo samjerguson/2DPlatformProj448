@@ -11,3 +11,18 @@ This website helped give some good ideas on how to flip a sprite in unity when a
 
 Whole Group - https://docs.unity3d.com/560/Documentation/Manual/UnityManual.html
 This website holds all of the default unity library functions as well as other helpful information that helped us make this project
+
+Blake Richmeier - https://www.youtube.com/watch?v=yuPpQoBJvvk&t=106s
+Watched this video to help learn how to integrate a background into a 2D game, but did not use any code from it.
+
+Blake Richmeier - https://www.youtube.com/watch?v=CLSiRf_OrBk&t=408s
+Watched this video to find out how to add power ups into the game.
+
+Blake Richmeier - https://mapio.net/pic/p-29053105/ 
+Photo of Eaton Hall used for level 1
+
+Blake Richmeier - https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hendersonengineers.com%2Fproject%2Featon-hall-university-of-kansas&psig=AOvVaw2AKaXKqWfqPSEpC6s0_hW7&ust=1637348554648000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKjy5-nMovQCFQAAAAAdAAAAABAD
+Photo used for the background of level 2
+
+Blake Richmeier - https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tradelineinc.com%2Freports%2F2016-4%2Flearned-hall-engineering-expansion-phase-2-leep2&psig=AOvVaw19RbpN3TgwJ13-bBY0Xg3k&ust=1637348620732000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCND93I_NovQCFQAAAAAdAAAAABAE
+Photo used for level 3

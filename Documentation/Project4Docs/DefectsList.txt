@@ -12,3 +12,12 @@ Found that the player can move before touching the ground
 11/12 - Ben Moeller
 Found that the leaderboard is not changing right when there is more than 1 score added
 11/14 - fixed: Ben Moeller
+
+11/07 - Blake Richmeier
+Found bug that the power ups were not visible
+11/00 - fixed: Blake Richmeier
+
+11/07 - Blake Richmeier
+Found bug that the power ups were showing up in hard mode
+11/02 - fixed: Blake Richmeier
+

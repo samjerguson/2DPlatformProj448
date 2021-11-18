@@ -14,7 +14,9 @@ Benjamin Moeller -
 
 Alec McGlynn
 11/16 - Updated level design - 2 hrs
-11/17 - Added wrap-around jump - .5 hrs
+11/17 - Added wrap-around jump - 1 hrs
+      - Recording test suite video segment - 1 hrs
+11/18 - Maintenance plan - 2 hrs
 
 
 jiayi fu

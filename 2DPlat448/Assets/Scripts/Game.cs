@@ -5,22 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    public float waitTime;
+    public List<bool> movingLeft;
+    public int enemySpeed = 7;
+    public List<Transform> mediumEnemyPaths;
+    public List<Transform> mediumEnemies; 
     public List<Transform> checkpoints = new List<Transform>();
     int lives = 3;
     public GameObject player;
     float cameraHalfHeight;
     int currRoom = 1;
+    static public bool immune = false;
+    float time_immune = 0f;
+
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   if(MainMenu.isHard) {
+            lives = 1;
+        }
         FindObjectOfType<Player>().GameOver += OnGameOver; //now the GameOver event will call the OnGameOver method in this script, if necessary
         cameraHalfHeight = Camera.main.orthographicSize;
+        setPreviousTimes();
+        mediumEnemies[0].position = mediumEnemyPaths[0].position;
+        mediumEnemies[1].position = mediumEnemyPaths[2].position;
+        mediumEnemies[2].position = mediumEnemyPaths[4].position;
+        mediumEnemies[3].position = mediumEnemyPaths[6].position;
+        mediumEnemies[4].position = mediumEnemyPaths[8].position;
+        mediumEnemies[5].position = mediumEnemyPaths[10].position;
+        mediumEnemies[6].position = mediumEnemyPaths[12].position;
+        //StartCoroutine(MediumEnemyMovement()); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(MainMenu.isMedium || MainMenu.isHard) {
+            MediumEnemyMovement();
+        }
+        if(lives == 0)
+        {
+            GameTimer.seconds = 0f;
+            SceneManager.LoadScene(2);
+        }
+        if(Time.time - time_immune > 3) {
+            immune = false;
+        }
         NewRoom(); //camera changes and checkpoint added
     }
 
@@ -41,7 +71,8 @@ public class Game : MonoBehaviour
 
     void OnGameOver()
     {
-        SceneManager.LoadScene(2);
+        GameTimer.storeTime(GameTimer.seconds);
+        SceneManager.LoadScene(3);
     }
 
     public void coroutineStarter()
@@ -50,15 +81,25 @@ public class Game : MonoBehaviour
     }
     public IEnumerator PlayerDeath()
     {
-        lives--;
-        bool canMove = false;
-        FindObjectOfType<Player>().setMove(canMove);
-        player.SetActive(false);
-        yield return new WaitForSecondsRealtime(1f);
-        player.SetActive(true);
-        player.transform.position = checkpoints[currRoom - 1].position;
-        canMove = true;
-        FindObjectOfType<Player>().setMove(canMove);
+        if(!immune)
+        {
+            immune = true;
+            time_immune = Time.time;
+            lives--;
+            bool canMove = false;
+            FindObjectOfType<Player>().setMove(canMove);
+            player.SetActive(false);
+            yield return new WaitForSecondsRealtime(1f);
+            player.SetActive(true);
+            player.transform.position = checkpoints[currRoom - 1].position;
+            canMove = true;
+            FindObjectOfType<Player>().setMove(canMove);
+        }
+    }
+
+    public void playerHeal()
+    {
+        lives++;
     }
 
     public void playerHeal()
@@ -70,5 +111,49 @@ public class Game : MonoBehaviour
     public int getLives()
     {
         return lives;
+    }
+
+    void setPreviousTimes() {
+        if(PlayerPrefs.GetFloat("score1") != 999.99f){
+            print("did nothing");
+        } else {
+            PlayerPrefs.SetFloat("score1", 999.99f);
+            PlayerPrefs.SetFloat("score2", 999.99f);
+            PlayerPrefs.SetFloat("score3", 999.99f);
+            PlayerPrefs.SetFloat("score4", 999.99f);
+            PlayerPrefs.SetFloat("score5", 999.99f);
+        }
+    }
+
+    void MediumEnemyMovement()
+    {
+        //while (true)
+        //{
+            for (int i = 0; i < mediumEnemies.Count; i++)
+            {
+                if (movingLeft[i] == true)
+                {
+                    mediumEnemies[i].position = Vector3.MoveTowards(mediumEnemies[i].position, mediumEnemyPaths[2 * i].position, enemySpeed * Time.deltaTime);
+                    //mediumEnemies[i].position += (mediumEnemyPaths[2 * i].position - mediumEnemies[i].position).normalized * enemySpeed * Time.deltaTime;
+                    if (mediumEnemies[i].position.x < mediumEnemyPaths[2 * i].position.x + 1)
+                    {
+                        movingLeft[i] = false;
+                        //yield return new WaitForSeconds(waitTime);
+                    }
+                    //yield return null;
+                }
+                else
+                {
+                    mediumEnemies[i].position = Vector3.MoveTowards(mediumEnemies[i].position, mediumEnemyPaths[(2 * i) + 1].position, enemySpeed * Time.deltaTime);
+                    //mediumEnemies[i].position += (mediumEnemyPaths[(2 * i) + 1].position - mediumEnemies[0].position).normalized * enemySpeed * Time.deltaTime;
+                    if (mediumEnemies[i].position.x > mediumEnemyPaths[(2 * i) + 1].position.x - 1)
+                    {
+                        movingLeft[i] = true;
+                        //yield return new WaitForSeconds(waitTime);
+                    }
+                    //yield return null;
+                }
+            }
+        //
     }
 }

@@ -1,0 +1,23 @@
+//File to store defects found within the project
+
+11/8 - Ben Moeller
+Found that when adding the new player model in, it caused issues
+when the player went off the screen
+11-9 - fixed: Ben Moeller
+
+11/11 - Ben Moeller
+Found that the player can move before touching the ground
+11/14 - fixed: Sam and Ben
+
+11/12 - Ben Moeller
+Found that the leaderboard is not changing right when there is more than 1 score added
+11/14 - fixed: Ben Moeller
+
+11/07 - Blake Richmeier
+Found bug that the power ups were not visible
+11/00 - fixed: Blake Richmeier
+
+11/07 - Blake Richmeier
+Found bug that the power ups were showing up in hard mode
+11/02 - fixed: Blake Richmeier
+

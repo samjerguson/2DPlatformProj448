@@ -7,7 +7,8 @@ public class GameOver : MonoBehaviour
 {
     public void PlayAgain()
     {
-        SceneManager.LoadScene(1);
+        GameTimer.seconds = 0f;
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

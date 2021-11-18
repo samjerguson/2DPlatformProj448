@@ -1,0 +1,6 @@
+//Text file to store how long each member thinks the project will take in total
+
+Benjamin Moeller - 45 hrs
+Alec McGlynn - 30 hrs
+Sam Jerguson - 40 hrs
+Blake Richmeier - 40 hours

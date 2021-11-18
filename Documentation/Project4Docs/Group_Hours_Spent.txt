@@ -1,0 +1,37 @@
+//Text file to store total group hours spent on project
+
+Benjamin Moeller -
+11/6 - Created default idle sprite - 2 hrs
+11/7 - Edited player sprite and changed menu flow - 1.5 hrs
+11/8 - Added idle and crouch animations - 2 hrs
+11/9 - Started coding the test suite - 1 hrs
+11/10 - Finshed codign the test suite plus adjusted crouch animations - 1 hrs
+11/11 - Added jump animation plus other various tasks - 2 hrs
+11/12 - Added the start of the leaderboard - 1.5 hrs
+11/13 - Helping fix player and working on leaderboard - 3 hrs
+11/14 - Fixing leaderboard and making finalizing immunity frames - 3 hrs
+11/16 - Added menu options for new difficulties and other stuff - 1.5 hrs
+
+Alec McGlynn
+11/16 - Updated level design - 2 hrs
+11/17 - Added wrap-around jump - 1 hrs
+      - Recording test suite video segment - 1 hrs
+11/18 - Maintenance plan - 2 hrs
+
+
+jiayi fu
+
+      find music- 1.5 hrs
+      work on code- 2 hrs
+      fix the code - 2 hrs
+      text music part-1 hrs
+
+Blake Richmeier
+11/5 - researched unity engine and libraries/watched tutorials - 3 hours
+11/8 - Added power Up objects into the game - 1 hour
+11/9 - Added functionality to the power ups - 2 hours
+11/16 - made backgrounds for the screens - .5 hours
+11/17 - added the backgrounds into the game - 1 hour
+11/17 - filmed video for intro and hard mode - 2 hours
+11/18 - edited final video and posted to YouTube - 1 hour
+

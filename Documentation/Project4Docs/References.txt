@@ -5,3 +5,9 @@ Learned about how to store player data with PlayerPrefs from this website
 
 Ben Moeller - https://www.youtube.com/watch?v=hkaysu1Z-N8&list=WL&index=2&t=1167s&ab_channel=Brackeys
 Learned how to make basic 2d animation from this video
+
+Ben Moeller - https://answers.unity.com/questions/952558/how-to-flip-sprite-horizontally-in-unity-2d.html
+This website helped give some good ideas on how to flip a sprite in unity when a player hits the left or right key
+
+Whole Group - https://docs.unity3d.com/560/Documentation/Manual/UnityManual.html
+This website holds all of the default unity library functions as well as other helpful information that helped us make this project

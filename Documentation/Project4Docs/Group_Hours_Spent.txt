@@ -36,3 +36,10 @@ Blake Richmeier
 11/17 - filmed video for intro and hard mode - 2 hours
 11/18 - edited final video and posted to YouTube - 1 hour
 
+Sam Jerguson
+    11/13 - 4 hrs: Adding enemy cycles and various fixes
+    11/15 - 1 hr 30 mins: Making song
+    11/16 - 3 hrs: Added rising obstacle and miscellaneous changes
+    11/17 - 15 mins: Recorded video
+
+

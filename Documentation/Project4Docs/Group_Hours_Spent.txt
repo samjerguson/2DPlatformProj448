@@ -11,6 +11,7 @@ Benjamin Moeller -
 11/13 - Helping fix player and working on leaderboard - 3 hrs
 11/14 - Fixing leaderboard and making finalizing immunity frames - 3 hrs
 11/16 - Added menu options for new difficulties and other stuff - 1.5 hrs
+11/17 - Group meeting for making video plus doing code review explanation - 2 hrs
 
 Alec McGlynn
 11/16 - Updated level design - 2 hrs

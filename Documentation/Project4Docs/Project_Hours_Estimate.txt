@@ -4,3 +4,9 @@ Benjamin Moeller - 45 hrs
 Alec McGlynn - 30 hrs
 Sam Jerguson - 40 hrs
 Blake Richmeier - 40 hours
+
+Average: 38.75 hrs
+
+We reached this conclusion for the avereage number of hours by using a psuedo agile method where we analyzed
+our past projects and how long each one took to complete. What we found was that each project usually took
+about 30 - 40 hours in total per project, so that is why our average computed to be 38.75.

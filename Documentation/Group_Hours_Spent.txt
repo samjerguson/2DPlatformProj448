@@ -31,5 +31,9 @@ Sam Jerguson
     10/24 - 3 hrs: Finished camera work and other small changes
     10/26 - 1 hr: Disallowed movement while charging a jump
     10/27 - 5 hrs: Lots of miscellaneous changes
+    11/13 - 4 hrs: Adding enemy cycles and various fixes
+    11/15 - 1 hr 30 mins: Making song
+    11/16 - 3 hrs: Creating rising binary obstacle, miscellaneous changes
 
-Total Hours - 34.75 hrs
+
+Total Hours - 42 hrs
